@@ -67,8 +67,8 @@ pipeline {
         stage('dockerizing project by dockerfile') {
             steps {
                 sh '''
-        		 sudo docker build -t $IMAGE_NAME:$BUILD_NUMBER .
-        		 sudo docker tag $IMAGE_NAME:$BUILD_NUMBER $IMAGE_NAME:latest
+        		 docker build -t $IMAGE_NAME:$BUILD_NUMBER .
+        		 docker tag $IMAGE_NAME:$BUILD_NUMBER $IMAGE_NAME:latest
 
         		 '''
             }
