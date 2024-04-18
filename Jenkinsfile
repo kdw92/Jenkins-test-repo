@@ -17,8 +17,8 @@ pipeline {
 
         //aws ecr
         
-        CONTAINER_NAME = 'teamplanner-backend-container'
-        AWS_CREDENTIAL_NAME = 'AWS_ECR'
+        CONTAINER_NAME = 'jigreg-test'
+        AWS_CREDENTIAL_NAME = 'jigreg-jenkins'
         ECR_PATH = '730335492431.dkr.ecr.ap-northeast-2.amazonaws.com'
         IMAGE_NAME = '730335492431.dkr.ecr.ap-northeast-2.amazonaws.com/jigreg-test'
         REGION = 'ap-northeast-2'
@@ -55,26 +55,6 @@ pipeline {
                 success {
                     echo 'Successfully Cloned Repository'
                 }
-                failure {
-                    error 'This pipeline stops here...'
-                }
-            }
-        }
-       // 일단은 테스트없이 빌드
-        stage('Build Gradle') {
-            steps {
-                echo 'Build Gradle'
-
-                dir('.'){
-                    sh '''
-                        pwd
-                        cd /var/jenkins_home/workspace/teamPlannerBackEnd_jenkinsFile
-                        chmod +x ./gradlew
-                        ./gradlew build --exclude-task test
-                    '''
-                }
-            }
-            post {
                 failure {
                     error 'This pipeline stops here...'
                 }
