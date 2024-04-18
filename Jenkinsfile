@@ -1,18 +1,6 @@
 pipeline {
     agent any
     options {
-    timeout(time: 1, unit: 'HOURS') // set timeout 1 hour
-    }
-    
-    environment {
-        
-        TIME_ZONE = 'Asia/Seoul'
-        
-        //github
-        TARGET_BRANCH = 'main'
-        REPOSITORY_URL= 'https://github.com/Kogoon/Jenkins-test-repo.git'pipeline {
-    agent any
-    options {
         timeout(time: 1, unit: 'HOURS') // set timeout 1 hour
     }
     environment {
@@ -30,7 +18,7 @@ pipeline {
         IMAGE_NAME = '730335492431.dkr.ecr.ap-northeast-2.amazonaws.com/jigreg-test'
         REGION = 'ap-northeast-2'
     }
-    stages{
+    stages {
         stage('init') {
             steps {
                 echo 'init stage'
