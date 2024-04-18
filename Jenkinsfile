@@ -107,7 +107,14 @@ pipeline {
 
                 }
             }
+            post {
+                success {
+                    echo 'success upload image'
+                }
+                failure {
+                    error 'fail upload image' // exit pipeline
+                }
+            }
         }
     }
 }
-
