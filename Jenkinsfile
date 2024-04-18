@@ -10,7 +10,7 @@ pipeline {
         
         //github
         TARGET_BRANCH = 'main'
-        REPOSITORY_URL= 'https://github.com/Kogoon/Jenkins-test-repo.git'
+        REPOSITORY_URL= 'https://github.com/Kogoon/Jenkins-test-repo'
 
         //docker-hub
         registryCredential = 'docker-hub'
