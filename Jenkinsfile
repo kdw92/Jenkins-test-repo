@@ -86,14 +86,11 @@ pipeline {
                 script{
                     // cleanup current user docker credentials
                     sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
-
-                    sh '''
-            		aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 730335492431.dkr.ecr.ap-northeast-2.amazonaws.com
-            		 '''
                    
-                    docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_NAME}") {
-                      docker.image("${IMAGE_NAME}:${BUILD_NUMBER}").push()
-                      docker.image("${IMAGE_NAME}:latest").push()
+                    withAWS(credentials:'AWS_ECR', region:'ap-northeast-2') {
+                        sh "aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin ${ECR_PATH}"
+                      sh "docker push ${IMAGE_NAME}:${BUILD_NUMBER}"
+                      sh "docker push ${IMAGE_NAME}:latest"
                     }
 
                 }
