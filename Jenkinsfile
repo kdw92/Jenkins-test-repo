@@ -7,7 +7,7 @@ pipeline {
         TIME_ZONE = 'Asia/Seoul'
         PROFILE = 'local'
         
-        REPOSITORY_CREDENTIAL_ID = 'kogoon'
+        REPOSITORY_CREDENTIAL_ID = 'test'
         REPOSITORY_URL = 'https://github.com/Kogoon/Jenkins-test-repo.git'
         TARGET_BRANCH = 'main'
         
